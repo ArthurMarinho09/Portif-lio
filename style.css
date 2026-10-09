@@ -1,0 +1,437 @@
+/* ==========================================
+   DEFINIÇÃO DE VARIÁVEIS DE CORES (TEMA ROXO)
+   ========================================== */
+   :root {
+    --bg-principal: #fbf9ff;       /* Fundo claro com nuance lilás */
+    --bg-card-header: #ffffff;      /* Fundo de cards e menu */
+    --bg-hero: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); /* Gradiente lavanda */
+    --bg-tag: #f3e8ff;             /* Fundo das tags de habilidades */
+    --texto-principal: #3b2a50;    /* Texto escuro arroxeado */
+    --texto-titulos: #1e1131;      /* Títulos profundos */
+    --texto-secundario: #6b5883;   /* Texto de apoio */
+    --cor-primaria: #7c3aed;       /* Roxo / Violeta principal */
+    --cor-primaria-hover: #6d28d9; /* Roxo mais escuro para hover */
+    --borda: #e9d5ff;              /* Linhas de divisão e bordas */
+}
+
+/* Cores Alternativas para o Modo Escuro */
+[data-theme="dark"] {
+    --bg-principal: #0f0a15;       /* Fundo escuro com nuance roxa */
+    --bg-card-header: #171123;     /* Cards e menu escuros */
+    --bg-hero: linear-gradient(135deg, #1e1233 0%, #0d0614 100%); /* Gradiente dark */
+    --bg-tag: #2e1d4b;             /* Tags escuras */
+    --texto-principal: #e2d9f3;    /* Texto claro com brilho sutil */
+    --texto-titulos: #ffffff;      /* Títulos em branco puro */
+    --texto-secundario: #a78bfa;   /* Lilás para textos de apoio */
+    --cor-primaria: #a78bfa;       /* Roxo claro para contraste no escuro */
+    --cor-primaria-hover: #c084fc; /* Roxo brilhante para hover */
+    --borda: #2e1d4b;              /* Bordas escuras */
+}
+
+/* ==========================================
+   CONFIGURAÇÕES GLOBAIS E RESETS
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* Transição suave ao alternar entre os modos claro e escuro */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--texto-principal);
+    background-color: var(--bg-principal);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--texto-titulos);
+}
+
+/* ==========================================
+   MENU DE NAVEGAÇÃO / HEADER
+   ========================================== */
+header {
+    background-color: var(--bg-card-header);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: var(--texto-secundario);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--cor-primaria);
+}
+
+/* ==========================================
+   BOTÃO DE ALTERNAR TEMA (DARK MODE)
+   ========================================== */
+.theme-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.theme-btn:hover {
+    background-color: var(--bg-tag);
+}
+
+/* Controla exibição dos emojis baseando-se no atributo data-theme */
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+:root:not([data-theme="dark"]) .icon-sun { display: none; }
+:root:not([data-theme="dark"]) .icon-moon { display: block; }
+
+/* ==========================================
+   MENU HAMBÚRGUER (MOBILE)
+   ========================================== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--texto-principal);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   SEÇÃO HERO (INÍCIO)
+   ========================================== */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg-hero);
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--texto-titulos);
+}
+
+.hero-content .highlight {
+    color: var(--cor-primaria);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: var(--texto-secundario);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* ==========================================
+   SEÇÃO SOBRE MIM
+   ========================================== */
+.about-section {
+    background-color: var(--bg-card-header);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--texto-secundario);
+}
+
+.about-skills h3 {
+    margin-bottom: 20px;
+    color: var(--texto-titulos);
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-tags span {
+    background-color: var(--bg-tag);
+    color: var(--texto-principal);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ==========================================
+   SEÇÃO DE PROJETOS
+   ========================================== */
+.projects-section {
+    background-color: var(--bg-principal);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--bg-card-header);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--borda);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.15); /* Sombra violeta fluida */
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    margin-bottom: 12px;
+    color: var(--texto-titulos);
+}
+
+.project-info p {
+    color: var(--texto-secundario);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.project-link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   NOVO RODAPÉ ESTILO Arthur Marinho
+   ========================================== */
+.custom-contact-section {
+    background-color: var(--bg-card-header);
+    border-top: 1px solid var(--borda);
+    padding: 80px 5% 25px 5%; /* Ajustado o padding-top para espaçar melhor */
+}
+
+/* Faixa do título Contato */
+.contact-top-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 2px solid var(--borda);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.contact-top-bar h2 {
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--texto-titulos);
+}
+
+.contact-icon-main {
+    width: 24px;
+    height: 24px;
+    color: var(--cor-primaria);
+}
+
+/* Container Principal do Rodapé */
+.contact-container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+
+/* Alinhamento dos itens de contato direto */
+.contact-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--texto-principal);
+}
+
+.info-item a {
+    color: var(--texto-principal);
+    text-decoration: none;
+}
+
+.info-item a:hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
+.info-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--cor-primaria);
+    flex-shrink: 0;
+}
+
+/* Alinhamento dos botões contornados */
+.contact-buttons-wrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.custom-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--cor-primaria);
+    color: var(--texto-titulos);
+    background-color: transparent;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.custom-outline-btn:hover {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Linha de créditos inferior */
+.footer-credits-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--borda);
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+}
+
+.credits-logo {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--texto-titulos);
+}
+
+.logo-accent {
+    color: var(--cor-primaria);
+    font-weight: 800;
+}
+
+.credits-slogan {
+    text-align: center;
+    font-style: italic;
+}
+
+.credits-copyright {
+    text-align: right;
+}
+
